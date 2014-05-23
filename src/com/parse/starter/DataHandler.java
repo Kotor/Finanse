@@ -1,5 +1,6 @@
 package com.parse.starter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 public class DataHandler {
+	ArrayList<String> foos = new ArrayList<String>();
 	
 	public void dodaj(String nazwa, double koszt, ParseFile rachunek, String tag) {
 		ParseObject transakcja = new ParseObject("Transakcja");
@@ -77,20 +79,28 @@ public class DataHandler {
 		    public void done(List<ParseObject> listaTransakcji,
 		                     ParseException e) {
 		        if (e == null) {
+		        	
+		        	for (int i = 0; i < listaTransakcji.size(); i++) {
+		        	       String c = listaTransakcji.get(i).getString("nazwa");
+		        	       foos.add(c); 
+		        	}
+		        	
 		        	// TODO obserwator
 		        	// obserwator.odswiezListe(listaTransakcji);
-		        	for (ParseObject transakcja : listaTransakcji) {
+		        	/*for (ParseObject transakcja : listaTransakcji) {
 		        		Log.i("stworzony", transakcja.getString("stworzony"));
 		        		Log.i("nazwa", transakcja.getString("nazwa"));
 		        		Log.i("koszt", ""+transakcja.getDouble("koszt"));
 		        		//Log.i("rachunek", transakcja.getString("rachunek"));
 		        		Log.i("tag", transakcja.getString("tag"));
-		        	}		        	
+		        	} */
 		        } else {
 		            Log.d("score", "Error: " + e.getMessage());
 		        }
 		    }
-		});
+		}
+		);
+		Log.i("Rozmiar przed returnem", Integer.toString(foos.size()));
 		return null;
 	}
 }
