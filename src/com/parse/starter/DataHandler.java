@@ -72,35 +72,22 @@ public class DataHandler {
 		});
 	}
 	
-	public List<ParseObject> pobierzListe() {
+	public ArrayList<Transakcja> pobierzListe() {
+		final ArrayList<Transakcja> transakcje = new ArrayList<Transakcja>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Transakcja");
 		query.fromLocalDatastore();
 		query.findInBackground(new FindCallback<ParseObject>() {
-		    public void done(List<ParseObject> listaTransakcji,
-		                     ParseException e) {
-		        if (e == null) {
-		        	
-		        	for (int i = 0; i < listaTransakcji.size(); i++) {
-		        	       String c = listaTransakcji.get(i).getString("nazwa");
-		        	       foos.add(c); 
-		        	}
-		        	
-		        	// TODO obserwator
-		        	// obserwator.odswiezListe(listaTransakcji);
-		        	/*for (ParseObject transakcja : listaTransakcji) {
-		        		Log.i("stworzony", transakcja.getString("stworzony"));
-		        		Log.i("nazwa", transakcja.getString("nazwa"));
-		        		Log.i("koszt", ""+transakcja.getDouble("koszt"));
-		        		//Log.i("rachunek", transakcja.getString("rachunek"));
-		        		Log.i("tag", transakcja.getString("tag"));
-		        	} */
-		        } else {
-		            Log.d("score", "Error: " + e.getMessage());
-		        }
-		    }
-		}
-		);
-		Log.i("Rozmiar przed returnem", Integer.toString(foos.size()));
-		return null;
+		    public void done(List<ParseObject> listaTransakcji, ParseException e) {
+		    	if (e == null) {
+		    	    for (int i = 0; i < listaTransakcji.size(); i++) {
+		    	    	Transakcja c = new Transakcja(listaTransakcji.get(i).getString("nazwa"), listaTransakcji.get(i).getDouble("koszt"));
+		    	    	transakcje.add(c); 
+		    	    }		    	    
+		    	} else {
+		    		Log.e("B³¹d", "Error: " + e.getMessage());
+		    	}
+		    } 
+		});
+		return transakcje;	
 	}
 }

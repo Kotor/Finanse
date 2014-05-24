@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".DodanieTransakcji" >
+
+    <EditText
+    	android:id="@+id/nazwa"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:minHeight="64dp"
+    	android:hint="@string/nazwa"
+    	android:inputType="text" />
+    <EditText
+    	android:id="@+id/koszt"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:minHeight="64dp"
+    	android:layout_below="@id/nazwa"
+    	android:hint="@string/koszt"
+    	android:inputType="numberDecimal"
+    	android:digits="0123456789.," />
+    <ImageView
+        android:id="@+id/aparat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nazwa"
+        android:layout_toRightOf="@id/koszt"
+        android:src="@drawable/aparat"
+        android:clickable="true" />
+    <AutoCompleteTextView
+	    android:id="@+id/tag"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:minHeight="64dp"
+	    android:layout_below="@id/koszt"
+    	android:hint="@string/tag"
+    	android:inputType="text" />
+	<TextView 
+        android:id="@+id/wydatek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
+        android:layout_below="@id/tag"
+		android:text="@string/wydatek" />
+    <android.widget.Switch
+	    android:id="@+id/przelacznik"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:minHeight="64dp"
+	    android:layout_below="@id/tag"
+	    android:layout_toRightOf="@id/wydatek" />
+    <TextView
+        android:id="@+id/przychod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"      
+		android:layout_below="@id/tag"
+		android:layout_toRightOf="@id/przelacznik"
+		android:text="@string/przychod" />
+    <Button
+        android:id="@+id/dodaj"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
+        android:layout_below="@id/wydatek"
+        android:text="@string/dodaj" />
+
+</RelativeLayout>

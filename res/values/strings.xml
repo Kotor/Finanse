@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, ParseStarterProjectActivity!</string>
-    <string name="app_name">ParseStarterProject</string>
+
+    <string name="app_name">Finanse</string>
+    <string name="title_activity_dodanie_transakcji">DodanieTransakcji</string>
+    <string name="nazwa">Nazwa</string>
+    <string name="koszt">Koszt</string>
+    <string name="tag">Tag</string>
+    <string name="wydatek">Wydatek</string>
+    <string name="przychod">Przychód</string>
+    <string name="dodaj">Dodaj</string>
+    <string-array name="tagi">
+        <item>Spożywcze</item>
+        <item>Paliwo</item>
+        <item>Odzież</item>
+        <item>Coś tam</item>
+    </string-array>
+
 </resources>
