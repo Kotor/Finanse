@@ -42,12 +42,15 @@ public final class R {
         public static final int przelacznik=0x7f080005;
         public static final int przychod=0x7f080006;
         public static final int tag=0x7f080003;
+        public static final int undo_row_texttv=0x7f080009;
+        public static final int undo_row_undobutton=0x7f08000a;
         public static final int wydatek=0x7f080004;
     }
     public static final class layout {
         public static final int activity_dodanie_transakcji=0x7f030000;
         public static final int main=0x7f030001;
         public static final int row=0x7f030002;
+        public static final int undo_row=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f060000;

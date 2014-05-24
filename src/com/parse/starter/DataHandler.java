@@ -11,8 +11,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class DataHandler {
-	ArrayList<String> foos = new ArrayList<String>();
+public class DataHandler {	ArrayList<String> foos = new ArrayList<String>();
 	
 	public void dodaj(String nazwa, double koszt, ParseFile rachunek, String tag) {
 		ParseObject transakcja = new ParseObject("Transakcja");
@@ -32,12 +31,11 @@ public class DataHandler {
 		transakcja.put("koszt", koszt);
 		transakcja.put("tag", tag);
 		transakcja.pinInBackground(null);
-		Log.i("Dodano", "Produkt: " + nazwa + " o: " + tsLong.toString());
 	}
 	
-	public void usun(String objectID) {
+	public void usun(String stworzony) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Transakcja");
-		query.whereEqualTo("objectId", objectID);
+		query.whereEqualTo("stworzony", stworzony);
 		query.fromLocalDatastore();
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> listaTransakcji,
@@ -80,7 +78,9 @@ public class DataHandler {
 		    public void done(List<ParseObject> listaTransakcji, ParseException e) {
 		    	if (e == null) {
 		    	    for (int i = 0; i < listaTransakcji.size(); i++) {
-		    	    	Transakcja c = new Transakcja(listaTransakcji.get(i).getString("nazwa"), listaTransakcji.get(i).getDouble("koszt"));
+		    	    	Transakcja c = new Transakcja(listaTransakcji.get(i).getString("stworzony"), 
+		    	    			listaTransakcji.get(i).getString("nazwa"), 
+		    	    			listaTransakcji.get(i).getDouble("koszt"));
 		    	    	transakcje.add(c); 
 		    	    }		    	    
 		    	} else {
