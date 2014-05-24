@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -17,14 +18,17 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
-public class MainActivity extends Activity implements OnItemClickListener {
+public class MainActivity extends Activity implements OnItemClickListener, SimpleGestureListener {
+	private SimpleGestureFilter detector;
 	ArrayList<Transakcja> transakcje = new ArrayList<Transakcja>();
 	
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		detector = new SimpleGestureFilter(this,this);
 		ListView list = (ListView) findViewById(R.id.list);
         list.setClickable(true);
 				
@@ -69,7 +73,31 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		Intent intent = new Intent(getBaseContext(), DodanieTransakcji.class);
-		startActivity(intent);
+		// TODO klikniecie elementu
 	}
+	
+	@Override
+    public boolean dispatchTouchEvent(MotionEvent me){
+        // Call onTouchEvent of SimpleGestureFilter class
+         this.detector.onTouchEvent(me);
+       return super.dispatchTouchEvent(me);
+    }
+    @Override
+    public void onSwipe(int direction) {
+    	switch (direction) {
+    		//case SimpleGestureFilter.SWIPE_RIGHT : break;
+    		//case SimpleGestureFilter.SWIPE_LEFT : break;
+    		case SimpleGestureFilter.SWIPE_DOWN : Intent intent = new Intent(getBaseContext(), DodanieTransakcji.class);
+    			startActivity(intent);
+    			overridePendingTransition(R.anim.push_down_in,R.anim.push_down_out);
+                break;
+    		//case SimpleGestureFilter.SWIPE_UP : break;      
+      	}       
+     }
+      
+     @Override
+     public void onDoubleTap() {
+        
+     }
+	
 }

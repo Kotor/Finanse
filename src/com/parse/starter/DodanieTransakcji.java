@@ -1,8 +1,12 @@
 package com.parse.starter;
 
+import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -15,13 +19,15 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
-public class DodanieTransakcji extends Activity {
+public class DodanieTransakcji extends Activity implements SimpleGestureListener {
+	private SimpleGestureFilter detector;
 	boolean wydatek;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dodanie_transakcji);
+		detector = new SimpleGestureFilter(this,this);
 		
 		// Get a reference to the AutoCompleteTextView in the layout
 		final AutoCompleteTextView tag = (AutoCompleteTextView) findViewById(R.id.tag);
@@ -87,4 +93,28 @@ public class DodanieTransakcji extends Activity {
 		    }
 		});
 	}
+	
+	@Override
+    public boolean dispatchTouchEvent(MotionEvent me){
+        // Call onTouchEvent of SimpleGestureFilter class
+         this.detector.onTouchEvent(me);
+       return super.dispatchTouchEvent(me);
+    }
+    @Override
+    public void onSwipe(int direction) {
+    	switch (direction) {
+    		// case SimpleGestureFilter.SWIPE_RIGHT : break;
+    		// case SimpleGestureFilter.SWIPE_LEFT : break;
+    		// case SimpleGestureFilter.SWIPE_DOWN : break;
+    		case SimpleGestureFilter.SWIPE_UP : super.onBackPressed();
+    			overridePendingTransition(R.anim.push_up_in,R.anim.push_up_out);
+    			break;      
+      	}
+     }
+      
+     @Override
+     public void onDoubleTap() {
+        
+     }
+	
 }
