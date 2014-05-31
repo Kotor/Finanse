@@ -9,14 +9,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseFile;
@@ -34,23 +33,17 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dodanie_transakcji);
 		detector = new SimpleGestureFilter(this,this);
-		
-		// Get a reference to the AutoCompleteTextView in the layout
-		final AutoCompleteTextView tag = (AutoCompleteTextView) findViewById(R.id.tag);
-		// Get the string array
-		String[] tagi = getResources().getStringArray(R.array.tagi);
-		// Create the adapter and set it to the AutoCompleteTextView 
-		ArrayAdapter<String> adapter = 
-		        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, tagi);
-		tag.setAdapter(adapter);
-		
-		
-		final EditText nazwa, koszt;
+				
+		final EditText nazwa, koszt, tag;
+		final TextView wydatekTV, przychodTV;
 		Switch przelacznik;
 		final Button dodaj;
 		        
 		nazwa = (EditText) findViewById(R.id.nazwa);
 		koszt = (EditText) findViewById(R.id.koszt);
+		tag = (EditText) findViewById(R.id.tag);
+		wydatekTV = (TextView) findViewById(R.id.wydatek);
+		przychodTV = (TextView) findViewById(R.id.przychod);
 		aparat = (ImageView) findViewById(R.id.aparat);
 		przelacznik = (Switch) findViewById(R.id.przelacznik);
 		dodaj = (Button) findViewById(R.id.dodaj);
@@ -68,8 +61,12 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				if(isChecked) {
 					wydatek = true;
+					wydatekTV.setTextColor(getBaseContext().getResources().getColor(R.color.disable_text));
+					przychodTV.setTextColor(getBaseContext().getResources().getColor(R.color.text));
 			    } else {
 			    	wydatek = false;
+			    	wydatekTV.setTextColor(getBaseContext().getResources().getColor(R.color.text));
+					przychodTV.setTextColor(getBaseContext().getResources().getColor(R.color.disable_text));
 			    }
 			}
 		});
@@ -78,12 +75,15 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 			public void onClick(View v) {
 				String nazwaTxt = nazwa.getText().toString();
 				String kosztTxt = koszt.getText().toString();
+				String tagTxt = tag.getText().toString();
 				if (!wydatek) {
 					String min = "-";
 					String kosztTemp = min.concat(kosztTxt);
-					kosztTxt = kosztTemp;
+					kosztTxt = kosztTemp;					
 				}
-				String tagTxt = tag.getText().toString();
+				if (tagTxt.isEmpty()) {
+					tagTxt = "Inne";
+				}
 				if (nazwaTxt.isEmpty() || koszt.getText().toString().isEmpty() || tagTxt.isEmpty()) {
 					Toast msg = Toast.makeText(getBaseContext(), "Nie podano wszystkich danych.", Toast.LENGTH_SHORT);
 			        msg.show();
@@ -114,7 +114,7 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) { 
         	aparat.setColorFilter(Color.GREEN);
             Bitmap zdj = (Bitmap) data.getExtras().get("data"); 
-            zdjecie = data.getExtras().get("data"); 
+            //zdjecie = data.getExtras().get("data"); 
         }  
     }
 	

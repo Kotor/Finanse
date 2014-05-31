@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".DodanieTransakcji" >
 
@@ -12,17 +12,17 @@
     	android:layout_height="wrap_content"
     	android:minHeight="64dp"
     	android:hint="@string/nazwa"
-    	android:textColor="#666"
+    	android:textColor="@color/text"
     	android:textSize="16sp"
-    	android:background="#00000000"
+    	android:background="@color/transparent"
     	android:padding="10dp"
-    	android:inputType="text" />    
+    	android:inputType="text|textCapSentences" />    
 		<LinearLayout 
 		    android:id="@+id/kosztAparat"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_below="@id/nazwa"
-		    android:background="#fff"
+		    android:background="@color/white"
 		    android:gravity="center"
 		    android:orientation="horizontal"
 		    android:minHeight="64dp" >		
@@ -33,16 +33,16 @@
 		        android:layout_weight="1"
 		        android:padding="10dp"
 		        android:hint="@string/koszt"
-		        android:textColor="#666"
+		        android:textColor="@color/text"
     			android:textSize="16sp"
-		        android:background="#00000000"
+		        android:background="@color/transparent"
 		        android:inputType="numberDecimal"
 			    android:digits="0123456789.," />		
 		    <View
 		        android:layout_width="1dp"
 		        android:layout_height="match_parent"
 		        android:layout_margin="10dp"
-		        android:background="#666" />		
+		        android:background="@color/text" />		
 		    <ImageView
 		        android:id="@+id/aparat"
 		        android:layout_width="wrap_content"
@@ -56,29 +56,29 @@
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
     	android:layout_below="@id/nazwa"
-    	android:background="#666666" />
+    	android:background="@color/text" />
 	<View
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
     	android:layout_below="@id/kosztAparat"
-    	android:background="#666666" />
-    <AutoCompleteTextView
-	    android:id="@+id/tag"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:minHeight="64dp"
-	    android:layout_below="@id/kosztAparat"
+    	android:background="@color/text" />
+	<EditText
+    	android:id="@+id/tag"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/kosztAparat"
+    	android:minHeight="64dp"
     	android:hint="@string/tag"
-    	android:textColor="#666"
+    	android:textColor="@color/text"
     	android:textSize="16sp"
-    	android:background="#00000000"
+    	android:background="@color/transparent"
     	android:padding="10dp"
-    	android:inputType="text" />
+    	android:inputType="text|textCapSentences" /> 
     <View
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
     	android:layout_below="@id/tag"
-    	android:background="#666666" />
+    	android:background="@color/text" />
 	    <RelativeLayout 
 	        android:id="@+id/rl"
 		    android:layout_width="match_parent"
@@ -92,7 +92,7 @@
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 				android:text="@string/wydatek"
-				android:textColor="#666"
+				android:textColor="@color/text"
 				android:textSize="16sp" />
 		    <android.widget.Switch
 			    android:id="@+id/przelacznik"
@@ -108,14 +108,14 @@
 		        android:layout_height="wrap_content"
 				android:layout_toRightOf="@id/przelacznik"
 				android:text="@string/przychod"
-				android:textColor="#666"
+				android:textColor="@color/disable_text"
 				android:textSize="16sp" />
 		</RelativeLayout>
     <View
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
     	android:layout_below="@id/rl"
-    	android:background="#666666" />
+    	android:background="@color/text" />
     <Button
         android:id="@+id/dodaj"
         android:layout_width="fill_parent"
@@ -123,8 +123,8 @@
         android:minHeight="64dp"
         android:layout_below="@id/rl"
         android:text="@string/dodaj"
-        android:textColor="#666"
+        android:textColor="@color/text"
         android:textSize="16sp"
-        android:background="#00000000" />
+        android:background="@color/transparent" />
 
 </RelativeLayout>

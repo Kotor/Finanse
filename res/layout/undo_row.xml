@@ -15,14 +15,14 @@
         android:layout_weight="1"
         android:padding="10dp"
         android:text="@string/usunieto"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <View
         android:layout_width="1px"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:background="#ffffff"
+        android:background="@color/white"
         tools:ignore="PxUsage" />
 
     <Button
@@ -35,7 +35,7 @@
         android:padding="10dp"
         android:paddingRight="8dp"
         android:text="@string/cofnij"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
 </LinearLayout>

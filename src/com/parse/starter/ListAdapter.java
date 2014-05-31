@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,10 +45,20 @@ public class ListAdapter extends BaseAdapter implements OnClickListener {
 
         TextView koszt = (TextView) convertView.findViewById(R.id.koszt);
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-        String formattedValue = decimalFormat.format(transakcja.getKoszt());
-        if (transakcja.getKoszt() <= 0) koszt.setTextColor(Color.RED);
-        if (transakcja.getKoszt() > 0) koszt.setTextColor(Color.GREEN);
-        koszt.setText(formattedValue);
+        String formattedValueKoszt = decimalFormat.format(transakcja.getKoszt());
+        if (transakcja.getKoszt() <= 0) koszt.setTextColor(context.getResources().getColor(R.color.wydatek));
+        if (transakcja.getKoszt() > 0) koszt.setTextColor(context.getResources().getColor(R.color.przychod));
+        koszt.setText(formattedValueKoszt);
+        
+        TextView saldo = (TextView) convertView.findViewById(R.id.saldo);
+        Double suma = 0.0;
+        for (int i = 0; i <= position; i++) {
+        	suma += listaTransakcji.get(i).getKoszt();
+        }
+        String formattedValueSaldo = decimalFormat.format(suma);
+        if (suma <= 0) saldo.setTextColor(context.getResources().getColor(R.color.wydatek));
+        if (suma > 0) saldo.setTextColor(context.getResources().getColor(R.color.przychod));
+        saldo.setText(formattedValueSaldo);
 
         return convertView;
     }
