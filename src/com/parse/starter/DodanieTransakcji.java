@@ -2,6 +2,8 @@ package com.parse.starter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -17,11 +19,15 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.parse.ParseFile;
 import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
 public class DodanieTransakcji extends Activity implements SimpleGestureListener {
 	private SimpleGestureFilter detector;
+	private static final int CAMERA_REQUEST = 1888; 
 	boolean wydatek;
+	ParseFile zdjecie;
+	ImageView aparat;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +46,6 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		
 		
 		final EditText nazwa, koszt;
-		ImageView aparat;
 		Switch przelacznik;
 		final Button dodaj;
 		        
@@ -53,8 +58,8 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		aparat.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				Toast msg = Toast.makeText(getBaseContext(),"aparat", Toast.LENGTH_LONG);
-		        msg.show();
+				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
+		        startActivityForResult(cameraIntent, CAMERA_REQUEST);
 			}
 		});
 		
@@ -87,7 +92,11 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 					double kosztDouble = Double.parseDouble(kosztTxt);
 					Long tsLong = System.currentTimeMillis()/1000;
 					String stworzony = tsLong.toString();
-					data.dodaj(stworzony, nazwaTxt, kosztDouble, tagTxt);
+					if (zdjecie != null) {
+						data.dodaj(stworzony, nazwaTxt, kosztDouble, zdjecie, tagTxt);
+					} else {
+						data.dodaj(stworzony, nazwaTxt, kosztDouble, tagTxt);
+					}
 					Log.i("Dodano transakcje", nazwaTxt);
 					Intent intent = new Intent();
 					intent.putExtra("stworzony", stworzony);
@@ -100,6 +109,14 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		    }
 		});
 	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) { 
+        	aparat.setColorFilter(Color.GREEN);
+            Bitmap zdj = (Bitmap) data.getExtras().get("data"); 
+            zdjecie = data.getExtras().get("data"); 
+        }  
+    }
 	
 	@Override
     public boolean dispatchTouchEvent(MotionEvent me){

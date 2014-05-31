@@ -9,11 +9,18 @@
     <string name="wydatek">Wydatek</string>
     <string name="przychod">Przychód</string>
     <string name="dodaj">Dodaj</string>
+    <string name="usunieto">Usunięto</string>
+    <string name="cofnij">Cofnij</string>
+
     <string-array name="tagi">
         <item>Spożywcze</item>
         <item>Paliwo</item>
         <item>Odzież</item>
         <item>Coś tam</item>
     </string-array>
+
+    <string name="title_activity_aparat">Aparat</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

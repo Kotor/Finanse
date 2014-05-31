@@ -16,14 +16,19 @@ public class DataHandler {
 		
 	}
 	
-	public void dodaj(String nazwa, double koszt, ParseFile rachunek, String tag) {
-		ParseObject transakcja = new ParseObject("Transakcja");
+	public void dodaj(String stworzony, String nazwa, double koszt, ParseFile zdjecie, String tag) {
+		final ParseObject transakcja = new ParseObject("Transakcja");
+		transakcja.put("stworzony", stworzony);
 		transakcja.put("nazwa", nazwa);
 		transakcja.put("koszt", koszt);
-		transakcja.put("rachunek", rachunek);
+		transakcja.put("zdjecie", zdjecie);
 		transakcja.put("tag", tag);
-		Log.i("ObjectID", transakcja.getObjectId());
-		transakcja.pinInBackground(null);
+		try {
+			transakcja.pin();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void dodaj(String stworzony, String nazwa, double koszt, String tag) {
@@ -32,7 +37,6 @@ public class DataHandler {
 		transakcja.put("nazwa", nazwa);
 		transakcja.put("koszt", koszt);
 		transakcja.put("tag", tag);
-		//transakcja.pinInBackground(null);
 		try {
 			transakcja.pin();
 		} catch (ParseException e) {
@@ -92,11 +96,11 @@ public class DataHandler {
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> listaTransakcji, ParseException e) {
 		    	if (e == null) {
-		    		Log.i("Rozmiar w pobierzListe()", Integer.toString(listaTransakcji.size()));
 		    	    for (int i = 0; i < listaTransakcji.size(); i++) {
 		    	    	Transakcja c = new Transakcja(listaTransakcji.get(i).getString("stworzony"), 
 		    	    			listaTransakcji.get(i).getString("nazwa"), 
-		    	    			listaTransakcji.get(i).getDouble("koszt"));
+		    	    			listaTransakcji.get(i).getDouble("koszt"),
+		    	    			listaTransakcji.get(i).getString("tag"));
 		    	    	transakcje.add(c); 
 		    	    }
 		    	} else {

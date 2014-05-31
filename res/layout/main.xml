@@ -10,8 +10,5 @@
               android:layout_width="match_parent"
               android:dividerHeight="0.3dp"
               android:divider="#666">
-         </ListView>
-         
-         
- 
+         </ListView> 
 </LinearLayout>

@@ -3,23 +3,31 @@ package com.parse.starter;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter;
+import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseFile;
 import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
-public class MainActivity extends Activity implements OnItemClickListener, SimpleGestureListener {
+public class MainActivity extends Activity implements OnItemClickListener, SimpleGestureListener, DeleteItemCallback {
 	private SimpleGestureFilter detector;
 	DataHandler data = new DataHandler();
 	public ArrayList<Transakcja> transakcje = data.pobierzListe();
 	ListView list;
 	ListAdapter adapter;
+	ImageView imageView;
 	
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,21 +40,35 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 		ParseAnalytics.trackAppOpened(getIntent());
 		
 		adapter = new ListAdapter(this, transakcje);
-        list.setAdapter(adapter);
         list.setOnItemClickListener(this);
-        
-        //ContextualUndoAdapter adapterCUA = new ContextualUndoAdapter(adapter, R.layout.undo_row, R.id.undo_row_undobutton, this);
-        //adapterCUA.setAbsListView(list);
-        //list.setAdapter(adapterCUA);
-        
+       
+        ContextualUndoAdapter adapterCUA = new ContextualUndoAdapter(adapter, R.layout.undo_row, R.id.undo_row_undobutton, 3000, this);
+        adapterCUA.setAbsListView(list);
+        list.setAdapter(adapterCUA);
+
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		String stworzony = transakcje.get(arg2).getStworzony();
-		data.usun(stworzony);
-		transakcje.remove(arg2);
-		adapter.notifyDataSetChanged();
+		String nazwa = transakcje.get(arg2).getNazwa();
+		Double koszt = transakcje.get(arg2).getKoszt();
+		String tag = transakcje.get(arg2).getTag();
+		ParseFile zdjecie = transakcje.get(arg2).getZdjecie();
+		String wszystko = stworzony.concat(nazwa).concat(tag).concat(Double.toString(koszt));
+		AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
+		LayoutInflater factory = LayoutInflater.from(MainActivity.this);
+		final View view = factory.inflate(R.layout.sample, null);
+		//this.imageView = (ImageView)this.findViewById(R.id.zdjecie);
+		//imageView.setImageBitmap(asd);
+		alertadd.setView(view);
+		alertadd.setNeutralButton(wszystko, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dlg, int sumthin) {
+
+                }
+            });
+
+alertadd.show();
 	}
 	
 	@Override
@@ -70,7 +92,7 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
     
     protected void onActivityResult(int requestCode, int resultCode, Intent in) {    
     	if(requestCode == 1 && resultCode == 2) {
-    		Transakcja tr = new Transakcja(in.getStringExtra("stworzony"), in.getStringExtra("nazwa"), in.getDoubleExtra("koszt", 0));
+    		Transakcja tr = new Transakcja(in.getStringExtra("stworzony"), in.getStringExtra("nazwa"), in.getDoubleExtra("koszt", 0), in.getStringExtra("tag"));
     		transakcje.add(tr);
     		adapter.notifyDataSetChanged();
     	}
@@ -79,5 +101,13 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
      @Override
      public void onDoubleTap() {
         
-     }	
+     }
+
+	@Override
+	public void deleteItem(int position) {
+		String stworzony = transakcje.get(position).getStworzony();
+		data.usun(stworzony);
+		transakcje.remove(position);
+		adapter.notifyDataSetChanged();
+	}	
 }

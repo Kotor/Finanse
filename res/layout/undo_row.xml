@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="10dp"
-        android:text="Usunięto"
+        android:text="@string/usunieto"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
@@ -31,10 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@null"
-        android:drawableLeft="@drawable/aparat"
+        android:drawableLeft="@drawable/kosz"
         android:padding="10dp"
         android:paddingRight="8dp"
-        android:text="Cofnij"
+        android:text="@string/cofnij"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 

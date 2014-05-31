@@ -32,34 +32,49 @@ public final class R {
     public static final class drawable {
         public static final int aparat=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int kosz=0x7f020002;
+        public static final int switch_bg=0x7f020003;
     }
     public static final class id {
-        public static final int aparat=0x7f080002;
-        public static final int dodaj=0x7f080007;
-        public static final int koszt=0x7f080001;
-        public static final int list=0x7f080008;
-        public static final int nazwa=0x7f080000;
-        public static final int przelacznik=0x7f080005;
-        public static final int przychod=0x7f080006;
-        public static final int tag=0x7f080003;
-        public static final int undo_row_texttv=0x7f080009;
-        public static final int undo_row_undobutton=0x7f08000a;
-        public static final int wydatek=0x7f080004;
+        public static final int action_settings=0x7f09000e;
+        public static final int aparat=0x7f090003;
+        public static final int dodaj=0x7f090009;
+        public static final int koszt=0x7f090002;
+        public static final int kosztAparat=0x7f090001;
+        public static final int list=0x7f09000a;
+        public static final int nazwa=0x7f090000;
+        public static final int przelacznik=0x7f090007;
+        public static final int przychod=0x7f090008;
+        public static final int rl=0x7f090005;
+        public static final int tag=0x7f090004;
+        public static final int undo_row_texttv=0x7f09000c;
+        public static final int undo_row_undobutton=0x7f09000d;
+        public static final int wydatek=0x7f090006;
+        public static final int zdjecie=0x7f09000b;
     }
     public static final class layout {
         public static final int activity_dodanie_transakcji=0x7f030000;
         public static final int main=0x7f030001;
         public static final int row=0x7f030002;
-        public static final int undo_row=0x7f030003;
+        public static final int sample=0x7f030003;
+        public static final int undo_row=0x7f030004;
+    }
+    public static final class menu {
+        public static final int aparat=0x7f080000;
     }
     public static final class string {
+        public static final int action_settings=0x7f06000b;
         public static final int app_name=0x7f060000;
+        public static final int cofnij=0x7f060009;
         public static final int dodaj=0x7f060007;
+        public static final int hello_world=0x7f06000c;
         public static final int koszt=0x7f060003;
         public static final int nazwa=0x7f060002;
         public static final int przychod=0x7f060006;
         public static final int tag=0x7f060004;
+        public static final int title_activity_aparat=0x7f06000a;
         public static final int title_activity_dodanie_transakcji=0x7f060001;
+        public static final int usunieto=0x7f060008;
         public static final int wydatek=0x7f060005;
     }
 }
