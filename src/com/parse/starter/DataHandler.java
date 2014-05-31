@@ -11,7 +11,10 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class DataHandler {	ArrayList<String> foos = new ArrayList<String>();
+public class DataHandler {	
+	public DataHandler(){
+		
+	}
 	
 	public void dodaj(String nazwa, double koszt, ParseFile rachunek, String tag) {
 		ParseObject transakcja = new ParseObject("Transakcja");
@@ -23,14 +26,19 @@ public class DataHandler {	ArrayList<String> foos = new ArrayList<String>();
 		transakcja.pinInBackground(null);
 	}
 	
-	public void dodaj(String nazwa, double koszt, String tag) {
+	public void dodaj(String stworzony, String nazwa, double koszt, String tag) {
 		final ParseObject transakcja = new ParseObject("Transakcja");
-		Long tsLong = System.currentTimeMillis()/1000;
-		transakcja.put("stworzony", tsLong.toString());
+		transakcja.put("stworzony", stworzony);
 		transakcja.put("nazwa", nazwa);
 		transakcja.put("koszt", koszt);
 		transakcja.put("tag", tag);
-		transakcja.pinInBackground(null);
+		//transakcja.pinInBackground(null);
+		try {
+			transakcja.pin();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void usun(String stworzony) {
@@ -41,10 +49,17 @@ public class DataHandler {	ArrayList<String> foos = new ArrayList<String>();
 		    public void done(List<ParseObject> listaTransakcji,
 		                     ParseException e) {
 		        if (e == null) {
-		        	listaTransakcji.get(0).unpinInBackground(null);
+		        	try {
+						listaTransakcji.get(0).unpin();
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		        	
 		        } else {
 		            Log.d("score", "Error: " + e.getMessage());
 		        }
+		        
 		    }
 		});
 	}
@@ -77,12 +92,13 @@ public class DataHandler {	ArrayList<String> foos = new ArrayList<String>();
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> listaTransakcji, ParseException e) {
 		    	if (e == null) {
+		    		Log.i("Rozmiar w pobierzListe()", Integer.toString(listaTransakcji.size()));
 		    	    for (int i = 0; i < listaTransakcji.size(); i++) {
 		    	    	Transakcja c = new Transakcja(listaTransakcji.get(i).getString("stworzony"), 
 		    	    			listaTransakcji.get(i).getString("nazwa"), 
 		    	    			listaTransakcji.get(i).getDouble("koszt"));
 		    	    	transakcje.add(c); 
-		    	    }		    	    
+		    	    }
 		    	} else {
 		    		Log.e("B³¹d", "Error: " + e.getMessage());
 		    	}
@@ -91,3 +107,5 @@ public class DataHandler {	ArrayList<String> foos = new ArrayList<String>();
 		return transakcje;	
 	}
 }
+
+

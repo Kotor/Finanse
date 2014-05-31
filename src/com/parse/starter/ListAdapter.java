@@ -34,7 +34,7 @@ public class ListAdapter extends BaseAdapter implements OnClickListener {
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
+    public View getView(int position, View convertView, ViewGroup viewGroup) {	
         Transakcja transakcja = listaTransakcji.get(position);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context

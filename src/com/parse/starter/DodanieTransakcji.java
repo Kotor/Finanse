@@ -1,7 +1,5 @@
 package com.parse.starter;
 
-import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
 public class DodanieTransakcji extends Activity implements SimpleGestureListener {
 	private SimpleGestureFilter detector;
@@ -85,10 +85,17 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 				} else {
 					DataHandler data = new DataHandler();
 					double kosztDouble = Double.parseDouble(kosztTxt);
-					Log.i("nazwa", nazwaTxt);
-					Log.i("koszt", String.valueOf(kosztDouble));
-					Log.i("tag", tagTxt);
-					data.dodaj(nazwaTxt, kosztDouble, tagTxt);
+					Long tsLong = System.currentTimeMillis()/1000;
+					String stworzony = tsLong.toString();
+					data.dodaj(stworzony, nazwaTxt, kosztDouble, tagTxt);
+					Log.i("Dodano transakcje", nazwaTxt);
+					Intent intent = new Intent();
+					intent.putExtra("stworzony", stworzony);
+					intent.putExtra("nazwa", nazwaTxt);
+					intent.putExtra("koszt", kosztDouble);
+					setResult(2, intent);
+					finish();
+					overridePendingTransition(R.anim.push_up_in,R.anim.push_up_out);
 				}
 		    }
 		});
