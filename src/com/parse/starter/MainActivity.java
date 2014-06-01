@@ -59,9 +59,10 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 			AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
 			LayoutInflater factory = LayoutInflater.from(MainActivity.this);
 			final View view = factory.inflate(R.layout.sample, null);
-			this.imageView = (ImageView)this.findViewById(R.id.zdjecie);
+			this.imageView = (ImageView) view.findViewById(R.id.zdjecie);
 			imageView.setImageBitmap(zdjecieBMP);
 			alertadd.setView(view);
+			alertadd.show();
 		}
 	}
 	

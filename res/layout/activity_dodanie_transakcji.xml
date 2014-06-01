@@ -94,14 +94,14 @@
 				android:text="@string/wydatek"
 				android:textColor="@color/text"
 				android:textSize="16sp" />
-		    <android.widget.Switch
-			    android:id="@+id/przelacznik"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_toRightOf="@id/wydatek"
+			<Switch
+		        android:id="@+id/przelacznik"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+	            android:layout_toRightOf="@id/wydatek"
 			    android:thumbTextPadding="25dp"
-				android:textOn=""
-				android:textOff="" />
+	            android:textOff=""
+	            android:textOn="" />
 		    <TextView
 		        android:id="@+id/przychod"
 		        android:layout_width="wrap_content"
