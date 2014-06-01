@@ -16,8 +16,9 @@ public class DataHandler {
 		
 	}
 	
-	public void dodaj(String stworzony, String nazwa, double koszt, ParseFile zdjecie, String tag) {
+	public void dodaj(String stworzony, String nazwa, double koszt, byte[] zdjecie, String tag) {
 		final ParseObject transakcja = new ParseObject("Transakcja");
+		Log.i("zdjecieDH", zdjecie.toString());
 		transakcja.put("stworzony", stworzony);
 		transakcja.put("nazwa", nazwa);
 		transakcja.put("koszt", koszt);
@@ -30,7 +31,7 @@ public class DataHandler {
 			e.printStackTrace();
 		}
 	}
-	
+	/*
 	public void dodaj(String stworzony, String nazwa, double koszt, String tag) {
 		final ParseObject transakcja = new ParseObject("Transakcja");
 		transakcja.put("stworzony", stworzony);
@@ -44,7 +45,7 @@ public class DataHandler {
 			e.printStackTrace();
 		}
 	}
-	
+	*/
 	public void usun(String stworzony) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Transakcja");
 		query.whereEqualTo("stworzony", stworzony);
@@ -58,8 +59,7 @@ public class DataHandler {
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}
-		        	
+					}		        	
 		        } else {
 		            Log.d("score", "Error: " + e.getMessage());
 		        }
@@ -97,17 +97,21 @@ public class DataHandler {
 		    public void done(List<ParseObject> listaTransakcji, ParseException e) {
 		    	if (e == null) {
 		    	    for (int i = 0; i < listaTransakcji.size(); i++) {
-		    	    	Transakcja c = new Transakcja(listaTransakcji.get(i).getString("stworzony"), 
+		    	    	Transakcja c = new Transakcja(
+		    	    			listaTransakcji.get(i).getString("stworzony"), 
 		    	    			listaTransakcji.get(i).getString("nazwa"), 
 		    	    			listaTransakcji.get(i).getDouble("koszt"),
+		    	    			listaTransakcji.get(i).getBytes("zdjecie"),
 		    	    			listaTransakcji.get(i).getString("tag"));
 		    	    	transakcje.add(c); 
 		    	    }
+		    	    Log.i("1", Integer.toString(listaTransakcji.size()));
 		    	} else {
 		    		Log.e("B³¹d", "Error: " + e.getMessage());
 		    	}
 		    } 
 		});
+		Log.i("2", Integer.toString(transakcje.size()));
 		return transakcje;	
 	}
 }

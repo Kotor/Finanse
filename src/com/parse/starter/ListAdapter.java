@@ -66,6 +66,5 @@ public class ListAdapter extends BaseAdapter implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 }

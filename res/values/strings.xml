@@ -11,9 +11,12 @@
     <string name="dodaj">Dodaj</string>
     <string name="usunieto">Usunięto</string>
     <string name="cofnij">Cofnij</string>
-
     <string name="title_activity_aparat">Aparat</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activityfullscreen">Activityfullscreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_popup">Popup</string>
 
 </resources>

@@ -1,14 +1,13 @@
 package com.parse.starter;
 
-import com.parse.ParseFile;
 
 public class Transakcja {
 	private String stworzony;
 	private String nazwa; 
 	private double koszt;
-	private ParseFile zdjecie;
+	private byte[] zdjecie;
 	private String tag;
-    	
+    /*	
     public Transakcja(String stworzony, String nazwa, double koszt, String tag) {
     	super();
     	this.stworzony = stworzony;
@@ -16,8 +15,8 @@ public class Transakcja {
         this.koszt = koszt;
         this.tag = tag;
     }
-    
-    public Transakcja(String stworzony, String nazwa, double koszt, ParseFile zdjecie, String tag) {
+    */
+    public Transakcja(String stworzony, String nazwa, double koszt, byte[] zdjecie, String tag) {
     	super();
     	this.stworzony = stworzony;
         this.nazwa = nazwa;
@@ -38,7 +37,7 @@ public class Transakcja {
        return koszt;
     }
     
-    public ParseFile getZdjecie() {
+    public byte[] getZdjecie() {
     	return zdjecie;
     }
     
@@ -58,7 +57,7 @@ public class Transakcja {
 		this.koszt = koszt;
 	}
 	
-	public void setZdjecie(ParseFile zdjecie) {
+	public void setZdjecie(byte[] zdjecie) {
 		this.zdjecie = zdjecie;
 	}
 	

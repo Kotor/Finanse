@@ -1,11 +1,12 @@
 package com.parse.starter;
 
+import java.io.ByteArrayOutputStream;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,14 +19,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.ParseFile;
 import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
 public class DodanieTransakcji extends Activity implements SimpleGestureListener {
 	private SimpleGestureFilter detector;
 	private static final int CAMERA_REQUEST = 1888; 
 	boolean wydatek;
-	ParseFile zdjecie;
+	byte[] zdjecie = "0".getBytes();
 	ImageView aparat;
 	
 	@Override
@@ -92,16 +92,13 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 					double kosztDouble = Double.parseDouble(kosztTxt);
 					Long tsLong = System.currentTimeMillis()/1000;
 					String stworzony = tsLong.toString();
-					if (zdjecie != null) {
-						data.dodaj(stworzony, nazwaTxt, kosztDouble, zdjecie, tagTxt);
-					} else {
-						data.dodaj(stworzony, nazwaTxt, kosztDouble, tagTxt);
-					}
-					Log.i("Dodano transakcje", nazwaTxt);
+					data.dodaj(stworzony, nazwaTxt, kosztDouble, zdjecie, tagTxt);
 					Intent intent = new Intent();
 					intent.putExtra("stworzony", stworzony);
 					intent.putExtra("nazwa", nazwaTxt);
 					intent.putExtra("koszt", kosztDouble);
+					intent.putExtra("zdjecie", zdjecie);
+					intent.putExtra("tag", tagTxt);
 					setResult(2, intent);
 					finish();
 					overridePendingTransition(R.anim.push_up_in,R.anim.push_up_out);
@@ -114,7 +111,10 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) { 
         	aparat.setColorFilter(Color.GREEN);
             Bitmap zdj = (Bitmap) data.getExtras().get("data"); 
-            //zdjecie = data.getExtras().get("data"); 
+                     
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            zdj.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            zdjecie = stream.toByteArray();            
         }  
     }
 	
@@ -140,5 +140,4 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
      public void onDoubleTap() {
         
      }
-	
 }

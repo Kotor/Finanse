@@ -3,11 +3,9 @@ package com.parse.starter;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +16,6 @@ import android.widget.ListView;
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter;
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
 import com.parse.ParseAnalytics;
-import com.parse.ParseFile;
 import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
 public class MainActivity extends Activity implements OnItemClickListener, SimpleGestureListener, DeleteItemCallback {
@@ -36,7 +33,7 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 		detector = new SimpleGestureFilter(this,this);
 		list = (ListView) findViewById(R.id.list);
         list.setClickable(true);
-        
+        Log.i("3", Integer.toString(transakcje.size()));
 		ParseAnalytics.trackAppOpened(getIntent());
 		
 		adapter = new ListAdapter(this, transakcje);
@@ -50,25 +47,7 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		String stworzony = transakcje.get(arg2).getStworzony();
-		String nazwa = transakcje.get(arg2).getNazwa();
-		Double koszt = transakcje.get(arg2).getKoszt();
-		String tag = transakcje.get(arg2).getTag();
-		ParseFile zdjecie = transakcje.get(arg2).getZdjecie();
-		String wszystko = stworzony.concat(nazwa).concat(tag).concat(Double.toString(koszt));
-		AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
-		LayoutInflater factory = LayoutInflater.from(MainActivity.this);
-		final View view = factory.inflate(R.layout.sample, null);
-		//this.imageView = (ImageView)this.findViewById(R.id.zdjecie);
-		//imageView.setImageBitmap(asd);
-		alertadd.setView(view);
-		alertadd.setNeutralButton(wszystko, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dlg, int sumthin) {
-
-                }
-            });
-
-alertadd.show();
+		
 	}
 	
 	@Override
@@ -92,10 +71,12 @@ alertadd.show();
     
     protected void onActivityResult(int requestCode, int resultCode, Intent in) {    
     	if(requestCode == 1 && resultCode == 2) {
-    		Transakcja tr = new Transakcja(in.getStringExtra("stworzony"), in.getStringExtra("nazwa"), in.getDoubleExtra("koszt", 0), in.getStringExtra("tag"));
+    		Transakcja tr = new Transakcja(in.getStringExtra("stworzony"), in.getStringExtra("nazwa"), 
+    				in.getDoubleExtra("koszt", 0), in.getByteArrayExtra("zdjecie"), in.getStringExtra("tag"));
     		transakcje.add(tr);
-    		adapter.notifyDataSetChanged();
+    		
     	}
+    	adapter.notifyDataSetChanged();
     } 
       
      @Override
