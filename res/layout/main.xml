@@ -8,7 +8,7 @@
               android:id="@+id/list"
               android:layout_height="wrap_content"
               android:layout_width="match_parent"
-              android:dividerHeight="0.3dp"
-              android:divider="@color/text">
+              android:dividerHeight="1dp"
+              android:divider="@drawable/list_divider" >
          </ListView> 
 </LinearLayout>

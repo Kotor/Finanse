@@ -52,6 +52,8 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 			@Override
 			public void onClick(View v) {
 				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
+				cameraIntent.putExtra("outputX",600);
+	            cameraIntent.putExtra("outputY", 600);
 		        startActivityForResult(cameraIntent, CAMERA_REQUEST);
 			}
 		});

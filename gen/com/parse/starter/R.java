@@ -47,9 +47,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int aparat=0x7f020000;
         public static final int ic_launcher=0x7f020001;
         public static final int kosz=0x7f020002;
-        public static final int switch_off_off_db=0x7f020003;
-        public static final int switch_on_on_db=0x7f020004;
-        public static final int toggle_selector=0x7f020005;
+        public static final int list_divider=0x7f020003;
     }
     public static final class id {
         public static final int action_settings=0x7f0a000f;

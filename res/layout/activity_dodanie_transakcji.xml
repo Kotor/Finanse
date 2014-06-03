@@ -54,12 +54,16 @@
 		</LinearLayout>
 	<View
     	android:layout_width="match_parent"
-    	android:layout_height="1dp"    
+    	android:layout_height="1dp" 
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"   
     	android:layout_below="@id/nazwa"
     	android:background="@color/text" />
 	<View
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"  
     	android:layout_below="@id/kosztAparat"
     	android:background="@color/text" />
 	<EditText
@@ -77,6 +81,8 @@
     <View
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"  
     	android:layout_below="@id/tag"
     	android:background="@color/text" />
 	    <RelativeLayout 
@@ -114,6 +120,8 @@
     <View
     	android:layout_width="match_parent"
     	android:layout_height="1dp"    
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"  
     	android:layout_below="@id/rl"
     	android:background="@color/text" />
     <Button
