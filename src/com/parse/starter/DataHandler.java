@@ -16,9 +16,8 @@ public class DataHandler {
 		
 	}
 	
-	public void dodaj(String stworzony, String nazwa, double koszt, byte[] zdjecie, String tag) {
+	public void dodaj(String stworzony, String nazwa, double koszt, String zdjecie, String tag) {
 		final ParseObject transakcja = new ParseObject("Transakcja");
-		Log.i("zdjecieDH", zdjecie.toString());
 		transakcja.put("stworzony", stworzony);
 		transakcja.put("nazwa", nazwa);
 		transakcja.put("koszt", koszt);
@@ -101,7 +100,7 @@ public class DataHandler {
 		    	    			listaTransakcji.get(i).getString("stworzony"), 
 		    	    			listaTransakcji.get(i).getString("nazwa"), 
 		    	    			listaTransakcji.get(i).getDouble("koszt"),
-		    	    			listaTransakcji.get(i).getBytes("zdjecie"),
+		    	    			listaTransakcji.get(i).getString("zdjecie"),
 		    	    			listaTransakcji.get(i).getString("tag"));
 		    	    	transakcje.add(c); 
 		    	    }

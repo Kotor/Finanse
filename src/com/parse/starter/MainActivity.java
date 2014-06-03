@@ -3,19 +3,15 @@ package com.parse.starter;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter;
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
@@ -50,20 +46,18 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		byte[] zdjecie = transakcje.get(arg2).getZdjecie();
-		Bitmap zdjecieBMP = BitmapFactory.decodeByteArray(zdjecie, 0, zdjecie.length);
+		String zdjeciePath = transakcje.get(arg2).getZdjecie();
+		Log.i("path", zdjeciePath);
 		
-		if (zdjecie.length < 2) {
-			Toast.makeText(getApplicationContext(), "Brak zdjêcia", Toast.LENGTH_SHORT).show();
-		} else {
-			AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
-			LayoutInflater factory = LayoutInflater.from(MainActivity.this);
-			final View view = factory.inflate(R.layout.sample, null);
-			this.imageView = (ImageView) view.findViewById(R.id.zdjecie);
-			imageView.setImageBitmap(zdjecieBMP);
-			alertadd.setView(view);
-			alertadd.show();
-		}
+		/*
+	    AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
+		LayoutInflater factory = LayoutInflater.from(MainActivity.this);
+		final View view = factory.inflate(R.layout.sample, null);
+		this.imageView = (ImageView) view.findViewById(R.id.zdjecie);
+		imageView.setImageDrawable(d);
+		alertadd.setView(view);
+		alertadd.show();
+		*/
 	}
 	
 	@Override
@@ -88,7 +82,7 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
     protected void onActivityResult(int requestCode, int resultCode, Intent in) {    
     	if(requestCode == 1 && resultCode == 2) {
     		Transakcja tr = new Transakcja(in.getStringExtra("stworzony"), in.getStringExtra("nazwa"), 
-    				in.getDoubleExtra("koszt", 0), in.getByteArrayExtra("zdjecie"), in.getStringExtra("tag"));
+    				in.getDoubleExtra("koszt", 0), in.getStringExtra("zdjecie"), in.getStringExtra("tag"));
     		transakcje.add(tr);
     		
     	}

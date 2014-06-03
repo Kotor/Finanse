@@ -5,7 +5,7 @@ public class Transakcja {
 	private String stworzony;
 	private String nazwa; 
 	private double koszt;
-	private byte[] zdjecie;
+	private String zdjecie;
 	private String tag;
     /*	
     public Transakcja(String stworzony, String nazwa, double koszt, String tag) {
@@ -16,7 +16,7 @@ public class Transakcja {
         this.tag = tag;
     }
     */
-    public Transakcja(String stworzony, String nazwa, double koszt, byte[] zdjecie, String tag) {
+    public Transakcja(String stworzony, String nazwa, double koszt, String zdjecie, String tag) {
     	super();
     	this.stworzony = stworzony;
         this.nazwa = nazwa;
@@ -37,7 +37,7 @@ public class Transakcja {
        return koszt;
     }
     
-    public byte[] getZdjecie() {
+    public String getZdjecie() {
     	return zdjecie;
     }
     
@@ -57,7 +57,7 @@ public class Transakcja {
 		this.koszt = koszt;
 	}
 	
-	public void setZdjecie(byte[] zdjecie) {
+	public void setZdjecie(String zdjecie) {
 		this.zdjecie = zdjecie;
 	}
 	

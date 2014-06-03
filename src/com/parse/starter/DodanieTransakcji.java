@@ -1,12 +1,14 @@
 package com.parse.starter;
 
-import java.io.ByteArrayOutputStream;
+
+import java.io.File;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,11 +24,11 @@ import android.widget.Toast;
 import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 
 public class DodanieTransakcji extends Activity implements SimpleGestureListener {
+	protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1;
 	private SimpleGestureFilter detector;
-	private static final int CAMERA_REQUEST = 1888; 
 	boolean wydatek;
-	byte[] zdjecie = "0".getBytes();
 	ImageView aparat;
+	String filePath;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,27 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		aparat = (ImageView) findViewById(R.id.aparat);
 		przelacznik = (Switch) findViewById(R.id.przelacznik);
 		dodaj = (Button) findViewById(R.id.dodaj);
-		        
+		     
+		final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/"; 
+        File newdir = new File(dir); 
+        newdir.mkdirs();
 		aparat.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
-				cameraIntent.putExtra("outputX",600);
-	            cameraIntent.putExtra("outputY", 600);
-		        startActivityForResult(cameraIntent, CAMERA_REQUEST);
+				Intent imageIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+				Long tsLong = System.currentTimeMillis()/1000;
+				String timeStamp = tsLong.toString();
+				
+				//folder stuff
+				File imagesFolder = new File(Environment.getExternalStorageDirectory(), "Finanse");
+				imagesFolder.mkdirs();
+
+				filePath = "/MyImages/QR_" + timeStamp + ".png" ;
+				File image = new File(imagesFolder, "QR_" + timeStamp + ".png");
+				Uri uriSavedImage = Uri.fromFile(image);
+
+				imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
+				startActivityForResult(imageIntent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 			}
 		});
 		
@@ -94,12 +109,12 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 					double kosztDouble = Double.parseDouble(kosztTxt);
 					Long tsLong = System.currentTimeMillis()/1000;
 					String stworzony = tsLong.toString();
-					data.dodaj(stworzony, nazwaTxt, kosztDouble, zdjecie, tagTxt);
+					data.dodaj(stworzony, nazwaTxt, kosztDouble, filePath, tagTxt);
 					Intent intent = new Intent();
 					intent.putExtra("stworzony", stworzony);
 					intent.putExtra("nazwa", nazwaTxt);
 					intent.putExtra("koszt", kosztDouble);
-					intent.putExtra("zdjecie", zdjecie);
+					intent.putExtra("zdjecie", filePath);
 					intent.putExtra("tag", tagTxt);
 					setResult(2, intent);
 					finish();
@@ -108,18 +123,7 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		    }
 		});
 	}
-	
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) { 
-        	aparat.setColorFilter(Color.GREEN);
-            Bitmap zdj = (Bitmap) data.getExtras().get("data"); 
-                     
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            zdj.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            zdjecie = stream.toByteArray();            
-        }  
-    }
-	
+		
 	@Override
     public boolean dispatchTouchEvent(MotionEvent me){
         // Call onTouchEvent of SimpleGestureFilter class
