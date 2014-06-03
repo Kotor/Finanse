@@ -104,13 +104,11 @@ public class DataHandler {
 		    	    			listaTransakcji.get(i).getString("tag"));
 		    	    	transakcje.add(c); 
 		    	    }
-		    	    Log.i("1", Integer.toString(listaTransakcji.size()));
 		    	} else {
 		    		Log.e("B³¹d", "Error: " + e.getMessage());
 		    	}
 		    } 
 		});
-		Log.i("2", Integer.toString(transakcje.size()));
 		return transakcje;	
 	}
 }

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,7 +29,7 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 	private SimpleGestureFilter detector;
 	boolean wydatek;
 	ImageView aparat;
-	String filePath;
+	String filePath = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +51,6 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		przelacznik = (Switch) findViewById(R.id.przelacznik);
 		dodaj = (Button) findViewById(R.id.dodaj);
 		     
-		final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/"; 
-        File newdir = new File(dir); 
-        newdir.mkdirs();
 		aparat.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
@@ -64,10 +62,11 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 				File imagesFolder = new File(Environment.getExternalStorageDirectory(), "Finanse");
 				imagesFolder.mkdirs();
 
-				filePath = "/MyImages/QR_" + timeStamp + ".png" ;
+				filePath = "/Finanse/QR_" + timeStamp + ".png" ;
 				File image = new File(imagesFolder, "QR_" + timeStamp + ".png");
 				Uri uriSavedImage = Uri.fromFile(image);
-
+				Log.i("sciezka zapis", uriSavedImage.toString());
+				
 				imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
 				startActivityForResult(imageIntent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 			}

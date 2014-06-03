@@ -7,15 +7,7 @@ public class Transakcja {
 	private double koszt;
 	private String zdjecie;
 	private String tag;
-    /*	
-    public Transakcja(String stworzony, String nazwa, double koszt, String tag) {
-    	super();
-    	this.stworzony = stworzony;
-        this.nazwa = nazwa;
-        this.koszt = koszt;
-        this.tag = tag;
-    }
-    */
+    
     public Transakcja(String stworzony, String nazwa, double koszt, String zdjecie, String tag) {
     	super();
     	this.stworzony = stworzony;

@@ -1,17 +1,25 @@
 package com.parse.starter;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter;
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.contextualundo.ContextualUndoAdapter.DeleteItemCallback;
@@ -37,27 +45,31 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 		
 		adapter = new ListAdapter(this, transakcje);
         list.setOnItemClickListener(this);
-       
         ContextualUndoAdapter adapterCUA = new ContextualUndoAdapter(adapter, R.layout.undo_row, R.id.undo_row_undobutton, 3000, this);
         adapterCUA.setAbsListView(list);
         list.setAdapter(adapterCUA);
-
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		String zdjeciePath = transakcje.get(arg2).getZdjecie();
-		Log.i("path", zdjeciePath);
+		String zdjeciePath = transakcje.get(arg2).getZdjecie();				
 		
-		/*
-	    AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
-		LayoutInflater factory = LayoutInflater.from(MainActivity.this);
-		final View view = factory.inflate(R.layout.sample, null);
-		this.imageView = (ImageView) view.findViewById(R.id.zdjecie);
-		imageView.setImageDrawable(d);
-		alertadd.setView(view);
-		alertadd.show();
-		*/
+		if (zdjeciePath.isEmpty()) {
+			Toast.makeText(getApplicationContext(), "Brak zdjêcia", Toast.LENGTH_SHORT).show();
+		} else {
+			File image = new File(Environment.getExternalStorageDirectory(), zdjeciePath);
+			Uri uriSavedImage = Uri.fromFile(image);
+			String sPath = uriSavedImage.toString().substring(8);
+			Log.i("sPath", sPath);
+			Bitmap bmp = BitmapFactory.decodeFile(sPath);
+			AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
+			LayoutInflater factory = LayoutInflater.from(MainActivity.this);
+			final View view = factory.inflate(R.layout.sample, null);
+			this.imageView = (ImageView) view.findViewById(R.id.zdjecie);		
+			imageView.setImageBitmap(bmp);		
+			alertadd.setView(view);
+			alertadd.show();
+		}
 	}
 	
 	@Override
@@ -66,6 +78,7 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
          this.detector.onTouchEvent(me);
        return super.dispatchTouchEvent(me);
     }
+	
     @Override
     public void onSwipe(int direction) {
     	switch (direction) {
@@ -94,11 +107,11 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
         
      }
 
-	@Override
-	public void deleteItem(int position) {
-		String stworzony = transakcje.get(position).getStworzony();
-		data.usun(stworzony);
-		transakcje.remove(position);
-		adapter.notifyDataSetChanged();
+     @Override
+     public void deleteItem(int position) {
+    	 String stworzony = transakcje.get(position).getStworzony();
+    	 data.usun(stworzony);
+    	 transakcje.remove(position);
+    	 adapter.notifyDataSetChanged();
 	}	
 }
