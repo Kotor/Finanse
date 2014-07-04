@@ -14,12 +14,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
@@ -27,7 +23,7 @@ import com.parse.starter.SimpleGestureFilter.SimpleGestureListener;
 public class DodanieTransakcji extends Activity implements SimpleGestureListener {
 	protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1;
 	private SimpleGestureFilter detector;
-	boolean wydatek;
+	boolean jestWydatek;
 	ImageView aparat;
 	String filePath = "";
 	
@@ -38,17 +34,14 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 		detector = new SimpleGestureFilter(this,this);
 				
 		final EditText nazwa, koszt, tag;
-		final TextView wydatekTV, przychodTV;
-		Switch przelacznik;
-		final Button dodaj;
+		final Button dodaj, wydatek, przychod;
 		        
 		nazwa = (EditText) findViewById(R.id.nazwa);
 		koszt = (EditText) findViewById(R.id.koszt);
 		tag = (EditText) findViewById(R.id.tag);
-		wydatekTV = (TextView) findViewById(R.id.wydatek);
-		przychodTV = (TextView) findViewById(R.id.przychod);
 		aparat = (ImageView) findViewById(R.id.aparat);
-		przelacznik = (Switch) findViewById(R.id.przelacznik);
+		wydatek = (Button) findViewById(R.id.wydatek);
+		przychod = (Button) findViewById(R.id.przychod);
 		dodaj = (Button) findViewById(R.id.dodaj);
 		     
 		aparat.setOnClickListener(new View.OnClickListener() {			
@@ -72,18 +65,19 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 			}
 		});
 		
-		przelacznik.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked) {
-					wydatek = true;
-					wydatekTV.setTextColor(getBaseContext().getResources().getColor(R.color.disable_text));
-					przychodTV.setTextColor(getBaseContext().getResources().getColor(R.color.text));
-			    } else {
-			    	wydatek = false;
-			    	wydatekTV.setTextColor(getBaseContext().getResources().getColor(R.color.text));
-					przychodTV.setTextColor(getBaseContext().getResources().getColor(R.color.disable_text));
-			    }
+		wydatek.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				wydatek.setTextColor(getResources().getColor(R.color.wydatek));
+				przychod.setTextColor(getResources().getColor(R.color.disable_text));
+				jestWydatek = false;
+		    }
+		});
+		
+		przychod.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				przychod.setTextColor(getResources().getColor(R.color.przychod));
+				wydatek.setTextColor(getResources().getColor(R.color.disable_text));
+				jestWydatek = true;
 			}
 		});
 		
@@ -92,7 +86,7 @@ public class DodanieTransakcji extends Activity implements SimpleGestureListener
 				String nazwaTxt = nazwa.getText().toString();
 				String kosztTxt = koszt.getText().toString();
 				String tagTxt = tag.getText().toString();
-				if (!wydatek) {
+				if (!jestWydatek) {
 					String min = "-";
 					String kosztTemp = min.concat(kosztTxt);
 					kosztTxt = kosztTemp;					

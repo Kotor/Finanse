@@ -54,21 +54,29 @@ public class MainActivity extends Activity implements OnItemClickListener, Simpl
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		String zdjeciePath = transakcje.get(arg2).getZdjecie();				
 		
+		
 		if (zdjeciePath.isEmpty()) {
 			Toast.makeText(getApplicationContext(), "Brak zdjêcia", Toast.LENGTH_SHORT).show();
 		} else {
 			File image = new File(Environment.getExternalStorageDirectory(), zdjeciePath);
 			Uri uriSavedImage = Uri.fromFile(image);
 			String sPath = uriSavedImage.toString().substring(8);
-			Log.i("sPath", sPath);
-			Bitmap bmp = BitmapFactory.decodeFile(sPath);
+			Bitmap bmp = BitmapFactory.decodeFile(sPath);			
 			AlertDialog.Builder alertadd = new AlertDialog.Builder(MainActivity.this);
 			LayoutInflater factory = LayoutInflater.from(MainActivity.this);
 			final View view = factory.inflate(R.layout.sample, null);
 			this.imageView = (ImageView) view.findViewById(R.id.zdjecie);		
-			imageView.setImageBitmap(bmp);		
+			imageView.setImageBitmap(bmp);	
+			imageView.setOnClickListener(new View.OnClickListener() {			
+				@Override
+				public void onClick(View v) {
+					Log.i("klik", "yes");
+				}
+			});
 			alertadd.setView(view);
+			
 			alertadd.show();
+			
 		}
 	}
 	

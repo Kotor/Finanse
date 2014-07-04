@@ -45,6 +45,7 @@
 		        android:background="@color/text" />		
 		    <ImageView
 		        android:id="@+id/aparat"
+		        android:contentDescription="@string/aparatDesc"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_marginRight="10dp"
@@ -92,30 +93,28 @@
 		    android:minHeight="64dp"
 		    android:layout_below="@id/tag"
 		    android:gravity="center"
-		    android:orientation="vertical" >
-			<TextView 
+		    android:orientation="vertical" >		    
+	        <Button
 		        android:id="@+id/wydatek"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:text="@string/wydatek"
-				android:textColor="@color/text"
-				android:textSize="16sp" />
-			<Switch
-		        android:id="@+id/przelacznik"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-	            android:layout_toRightOf="@id/wydatek"
-			    android:thumbTextPadding="25dp"
-	            android:textOff=""
-	            android:textOn="" />
-		    <TextView
+		        android:layout_marginRight="25dp"
+		        android:minHeight="64dp"
+		        android:text="@string/wydatek"
+		        android:textColor="@color/wydatek"
+		        android:textSize="16sp"
+		        android:background="@color/transparent" />
+	        <Button
 		        android:id="@+id/przychod"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-				android:layout_toRightOf="@id/przelacznik"
-				android:text="@string/przychod"
-				android:textColor="@color/disable_text"
-				android:textSize="16sp" />
+		        android:layout_marginLeft="25dp"
+		        android:layout_toRightOf="@id/wydatek"
+		        android:minHeight="64dp"
+		        android:text="@string/przychod"
+		        android:textColor="@color/disable_text"
+		        android:textSize="16sp"
+		        android:background="@color/transparent" />
 		</RelativeLayout>
     <View
     	android:layout_width="match_parent"

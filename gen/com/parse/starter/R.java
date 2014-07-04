@@ -25,13 +25,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonBarStyle=0x7f010000;
     }
     public static final class color {
-        public static final int black_overlay=0x7f050006;
-        public static final int disable_text=0x7f050002;
-        public static final int przychod=0x7f050005;
-        public static final int text=0x7f050001;
-        public static final int transparent=0x7f050003;
-        public static final int white=0x7f050000;
-        public static final int wydatek=0x7f050004;
+        public static final int black_overlay=0x7f050000;
+        public static final int disable_text=0x7f050003;
+        public static final int przychod=0x7f050006;
+        public static final int text=0x7f050002;
+        public static final int transparent=0x7f050004;
+        public static final int white=0x7f050001;
+        public static final int wydatek=0x7f050005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -45,27 +45,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class drawable {
         public static final int aparat=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int kosz=0x7f020002;
-        public static final int list_divider=0x7f020003;
+        public static final int btn_toggle_czerwony=0x7f020001;
+        public static final int btn_toggle_zielony=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int kosz=0x7f020004;
+        public static final int list_divider=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000f;
+        public static final int action_settings=0x7f0a000e;
         public static final int aparat=0x7f0a0003;
-        public static final int dodaj=0x7f0a0009;
+        public static final int dodaj=0x7f0a0008;
         public static final int koszt=0x7f0a0002;
         public static final int kosztAparat=0x7f0a0001;
-        public static final int list=0x7f0a000a;
+        public static final int list=0x7f0a0009;
         public static final int nazwa=0x7f0a0000;
-        public static final int przelacznik=0x7f0a0007;
-        public static final int przychod=0x7f0a0008;
+        public static final int przychod=0x7f0a0007;
         public static final int rl=0x7f0a0005;
-        public static final int saldo=0x7f0a000b;
+        public static final int saldo=0x7f0a000a;
         public static final int tag=0x7f0a0004;
-        public static final int undo_row_texttv=0x7f0a000d;
-        public static final int undo_row_undobutton=0x7f0a000e;
+        public static final int undo_row_texttv=0x7f0a000c;
+        public static final int undo_row_undobutton=0x7f0a000d;
         public static final int wydatek=0x7f0a0006;
-        public static final int zdjecie=0x7f0a000c;
+        public static final int zdjecie=0x7f0a000b;
     }
     public static final class layout {
         public static final int activity_dodanie_transakcji=0x7f030000;
@@ -81,31 +82,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int action_settings=0x7f07000b;
+        public static final int aparatDesc=0x7f07000d;
         public static final int app_name=0x7f070000;
         public static final int cofnij=0x7f070009;
         public static final int dodaj=0x7f070007;
-        public static final int dummy_button=0x7f07000e;
-        public static final int dummy_content=0x7f07000f;
-        public static final int hello_world=0x7f07000c;
         public static final int koszt=0x7f070003;
         public static final int nazwa=0x7f070002;
         public static final int przychod=0x7f070006;
         public static final int tag=0x7f070004;
-        public static final int title_activity_activityfullscreen=0x7f07000d;
         public static final int title_activity_aparat=0x7f07000a;
         public static final int title_activity_dodanie_transakcji=0x7f070001;
-        public static final int title_activity_popup=0x7f070010;
         public static final int usunieto=0x7f070008;
         public static final int wydatek=0x7f070005;
+        public static final int zdjecieDesc=0x7f07000c;
     }
     public static final class style {
-        /**  Backward-compatible version of ?android:attr/buttonBarStyle 
-         */
-        public static final int ButtonBar=0x7f080001;
-        /**  Backward-compatible version of ?android:attr/buttonBarButtonStyle 
-         */
-        public static final int ButtonBarButton=0x7f080002;
-        public static final int FullscreenActionBarStyle=0x7f080003;
+        public static final int FullscreenActionBarStyle=0x7f080001;
         public static final int FullscreenTheme=0x7f080000;
     }
     public static final class styleable {
