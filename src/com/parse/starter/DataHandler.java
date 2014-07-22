@@ -30,21 +30,7 @@ public class DataHandler {
 			e.printStackTrace();
 		}
 	}
-	/*
-	public void dodaj(String stworzony, String nazwa, double koszt, String tag) {
-		final ParseObject transakcja = new ParseObject("Transakcja");
-		transakcja.put("stworzony", stworzony);
-		transakcja.put("nazwa", nazwa);
-		transakcja.put("koszt", koszt);
-		transakcja.put("tag", tag);
-		try {
-			transakcja.pin();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	*/
+	
 	public void usun(String stworzony) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Transakcja");
 		query.whereEqualTo("stworzony", stworzony);

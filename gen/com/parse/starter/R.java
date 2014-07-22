@@ -45,28 +45,29 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class drawable {
         public static final int aparat=0x7f020000;
-        public static final int btn_toggle_czerwony=0x7f020001;
-        public static final int btn_toggle_zielony=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int kosz=0x7f020004;
-        public static final int list_divider=0x7f020005;
+        public static final int ic_launcher=0x7f020001;
+        public static final int kosz=0x7f020002;
+        public static final int list_divider=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000e;
+        public static final int action_settings=0x7f0a0011;
         public static final int aparat=0x7f0a0003;
         public static final int dodaj=0x7f0a0008;
         public static final int koszt=0x7f0a0002;
         public static final int kosztAparat=0x7f0a0001;
-        public static final int list=0x7f0a0009;
+        public static final int list=0x7f0a000c;
         public static final int nazwa=0x7f0a0000;
         public static final int przychod=0x7f0a0007;
+        public static final int relativeDodaj=0x7f0a000a;
+        public static final int relativeLista=0x7f0a000b;
         public static final int rl=0x7f0a0005;
-        public static final int saldo=0x7f0a000a;
+        public static final int saldo=0x7f0a000d;
+        public static final int scrollView=0x7f0a0009;
         public static final int tag=0x7f0a0004;
-        public static final int undo_row_texttv=0x7f0a000c;
-        public static final int undo_row_undobutton=0x7f0a000d;
+        public static final int undo_row_texttv=0x7f0a000f;
+        public static final int undo_row_undobutton=0x7f0a0010;
         public static final int wydatek=0x7f0a0006;
-        public static final int zdjecie=0x7f0a000b;
+        public static final int zdjecie=0x7f0a000e;
     }
     public static final class layout {
         public static final int activity_dodanie_transakcji=0x7f030000;

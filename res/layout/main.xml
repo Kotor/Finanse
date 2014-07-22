@@ -1,14 +1,191 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical" >
-          <ListView
-              android:id="@+id/list"
-              android:layout_height="wrap_content"
-              android:layout_width="match_parent"
-              android:dividerHeight="1dp"
-              android:divider="@drawable/list_divider" >
-         </ListView> 
-</LinearLayout>
+    android:orientation="vertical"
+    tools:context=".DodanieTransakcji" >
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/relativeDodaj"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/nazwa"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:hint="@string/nazwa"
+                    android:inputType="text|textCapSentences"
+                    android:focusable="false"
+                    android:minHeight="64dp"
+                    android:padding="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/kosztAparat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nazwa"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:minHeight="64dp"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/koszt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:digits="0123456789.,"
+                        android:hint="@string/koszt"
+                        android:inputType="numberDecimal"
+                        android:focusable="false"
+                        android:padding="10dp"
+                        android:textColor="@color/text"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:background="@color/text" />
+
+                    <ImageView
+                        android:id="@+id/aparat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:clickable="true"
+                        android:contentDescription="@string/aparatDesc"
+                        android:src="@drawable/aparat" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/nazwa"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/text" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/kosztAparat"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/text" />
+
+                <EditText
+                    android:id="@+id/tag"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/kosztAparat"
+                    android:background="@color/transparent"
+                    android:hint="@string/tag"
+                    android:inputType="text|textCapSentences"
+                    android:focusable="false"
+                    android:minHeight="64dp"
+                    android:padding="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tag"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/text" />
+
+                <RelativeLayout
+                    android:id="@+id/rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tag"
+                    android:gravity="center"
+                    android:minHeight="64dp"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/wydatek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:background="@color/transparent"
+                        android:minHeight="64dp"
+                        android:text="@string/wydatek"
+                        android:textColor="@color/wydatek"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/przychod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_toRightOf="@id/wydatek"
+                        android:background="@color/transparent"
+                        android:minHeight="64dp"
+                        android:text="@string/przychod"
+                        android:textColor="@color/disable_text"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/rl"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/text" />
+
+                <Button
+                    android:id="@+id/dodaj"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl"
+                    android:background="@color/transparent"
+                    android:minHeight="64dp"
+                    android:text="@string/dodaj"
+                    android:textColor="@color/text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLista"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <ListView
+                    android:id="@+id/list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/list_divider"
+                    android:dividerHeight="1dp" >
+                </ListView>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
