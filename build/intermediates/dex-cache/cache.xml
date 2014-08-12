@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/Kotor/Finanse/build/intermediates/pre-dexed/debug/android-support-v4-f676e87b562a7fe70e276ffa018f0f9f82234716.jar"
+        jar="/Users/Kotor/Finanse/libs/android-support-v4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="db0f122c99ef9f90dbab3fada6d191f2880cbb8e"/>
+    <item
+        dex="/Users/Kotor/Finanse/build/intermediates/pre-dexed/debug/nineoldandroids-2.4.0-324c32d5a4e61df40b8a36c5cfedf31222ab7632.jar"
+        jar="/Users/Kotor/Finanse/libs/nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7"/>
+    <item
+        dex="/Users/Kotor/Finanse/build/intermediates/pre-dexed/debug/com.haarman.listviewanimations-2.6.0-caae34da36cbeafd637f0d22d8def35854acfd50.jar"
+        jar="/Users/Kotor/Finanse/libs/com.haarman.listviewanimations-2.6.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="59351ccb0a1631d30358f6a92749a072f2df7602"/>
+    <item
+        dex="/Users/Kotor/Finanse/build/intermediates/pre-dexed/debug/Parse-1.5.0-380715fb2fa82e6de9c4c8e61424763502f65737.jar"
+        jar="/Users/Kotor/Finanse/libs/Parse-1.5.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8a675f7e3312d8b28188ec653bbea6d435aaa7d1"/>
+
+</pre-dex-items>

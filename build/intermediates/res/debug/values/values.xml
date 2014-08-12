@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/Kotor/Finanse/res/values/color.xml -->
+    <eat-comment />
+
+    <color name="black_overlay">#66000000</color>
+    <color name="disable_text">#E0E0E0</color>
+    <color name="przychod">#007A0B</color>
+    <color name="text">#666666</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="wydatek">#BE0404</color>
+    <!-- From: file:/Users/Kotor/Finanse/res/values/attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="buttonBarStyle" format="reference" />
+        <attr name="buttonBarButtonStyle" format="reference" />
+    </declare-styleable>
+    <!-- From: file:/Users/Kotor/Finanse/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/Users/Kotor/Finanse/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="action_settings">Settings</string>
+    <string name="aparatDesc">Ikona aparatu</string>
+    <string name="app_name">OpenWallet</string>
+    <string name="cofnij">Cofnij</string>
+    <string name="dodaj">Dodaj</string>
+    <string name="koszt">Koszt</string>
+    <string name="nazwa">Nazwa</string>
+    <string name="przychod">Przychód</string>
+    <string name="tag">Tag</string>
+    <string name="title_activity_aparat">Aparat</string>
+    <string name="title_activity_dodanie_transakcji">DodanieTransakcji</string>
+    <string name="usunieto">Usunięto</string>
+    <string name="wydatek">Wydatek</string>
+    <string name="zdjecieDesc">Zdjęcie paragonu</string>
+
+</resources>

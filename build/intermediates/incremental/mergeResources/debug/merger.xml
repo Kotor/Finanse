@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/Kotor/Finanse/res" >
+            <file
+                name="push_down_in"
+                path="/Users/Kotor/Finanse/res/anim/push_down_in.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="push_down_out"
+                path="/Users/Kotor/Finanse/res/anim/push_down_out.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="push_up_in"
+                path="/Users/Kotor/Finanse/res/anim/push_up_in.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="push_up_out"
+                path="/Users/Kotor/Finanse/res/anim/push_up_out.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="list_divider"
+                path="/Users/Kotor/Finanse/res/drawable/list_divider.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="aparat"
+                path="/Users/Kotor/Finanse/res/drawable-hdpi/aparat.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/Kotor/Finanse/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="kosz"
+                path="/Users/Kotor/Finanse/res/drawable-hdpi/kosz.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="aparat"
+                path="/Users/Kotor/Finanse/res/drawable-ldpi/aparat.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/Kotor/Finanse/res/drawable-ldpi/ic_launcher.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="kosz"
+                path="/Users/Kotor/Finanse/res/drawable-ldpi/kosz.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="aparat"
+                path="/Users/Kotor/Finanse/res/drawable-mdpi/aparat.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/Kotor/Finanse/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="kosz"
+                path="/Users/Kotor/Finanse/res/drawable-mdpi/kosz.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="aparat"
+                path="/Users/Kotor/Finanse/res/drawable-xhdpi/aparat.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/Kotor/Finanse/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="kosz"
+                path="/Users/Kotor/Finanse/res/drawable-xhdpi/kosz.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_dodanie_transakcji"
+                path="/Users/Kotor/Finanse/res/layout/activity_dodanie_transakcji.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="/Users/Kotor/Finanse/res/layout/main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="row"
+                path="/Users/Kotor/Finanse/res/layout/row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="sample"
+                path="/Users/Kotor/Finanse/res/layout/sample.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="undo_row"
+                path="/Users/Kotor/Finanse/res/layout/undo_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activityfullscreen"
+                path="/Users/Kotor/Finanse/res/menu/activityfullscreen.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="aparat"
+                path="/Users/Kotor/Finanse/res/menu/aparat.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="popup"
+                path="/Users/Kotor/Finanse/res/menu/popup.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="/Users/Kotor/Finanse/res/values/attrs.xml"
+                qualifiers="" >
+                <declare-styleable name="ButtonBarContainerTheme" >
+                    <attr
+                        name="buttonBarStyle"
+                        format="reference" />
+                    <attr
+                        name="buttonBarButtonStyle"
+                        format="reference" />
+                </declare-styleable>
+            </file>
+            <file
+                path="/Users/Kotor/Finanse/res/values/color.xml"
+                qualifiers="" >
+                <color name="przychod" >#007A0B
+                </color>
+                <color name="text" >#666666
+                </color>
+                <color name="black_overlay" >#66000000
+                </color>
+                <color name="wydatek" >#BE0404
+                </color>
+                <color name="transparent" >#00000000
+                </color>
+                <color name="disable_text" >#E0E0E0
+                </color>
+                <color name="white" >#FFFFFF
+                </color>
+            </file>
+            <file
+                path="/Users/Kotor/Finanse/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/Kotor/Finanse/res/values/strings.xml"
+                qualifiers="" >
+                <string name="cofnij" >Cofnij
+                </string>
+                <string name="przychod" >Przychód
+                </string>
+                <string name="title_activity_dodanie_transakcji" >DodanieTransakcji
+                </string>
+                <string name="dodaj" >Dodaj
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="app_name" >OpenWallet
+                </string>
+                <string name="koszt" >Koszt
+                </string>
+                <string name="usunieto" >Usunięto
+                </string>
+                <string name="tag" >Tag
+                </string>
+                <string name="nazwa" >Nazwa
+                </string>
+                <string name="title_activity_aparat" >Aparat
+                </string>
+                <string name="zdjecieDesc" >Zdjęcie paragonu
+                </string>
+                <string name="wydatek" >Wydatek
+                </string>
+                <string name="aparatDesc" >Ikona aparatu
+                </string>
+            </file>
+            <file
+                path="/Users/Kotor/Finanse/res/values-sw720dp-land/dimens.xml"
+                qualifiers="sw720dp-land-v13" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/Kotor/Finanse/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="FullscreenTheme"
+                    parent="android:Theme.Holo" >
+                    <item name="android:actionBarStyle">
+@style/FullscreenActionBarStyle
+                    </item>
+                    <item name="android:windowActionBarOverlay">
+true
+                    </item>
+                    <item name="android:windowBackground">
+@null
+                    </item>
+                    <item name="buttonBarStyle">
+?android:attr/buttonBarStyle
+                    </item>
+                    <item name="buttonBarButtonStyle">
+?android:attr/buttonBarButtonStyle
+                    </item>
+                </style>
+
+                <style
+                    name="FullscreenActionBarStyle"
+                    parent="android:Widget.Holo.ActionBar" >
+                    <item name="android:background">
+@color/black_overlay
+                    </item>
+                </style>
+            </file>
+        </source>
+        <source path="/Users/Kotor/Finanse/build/generated/res/rs/debug" />
+        <source path="/Users/Kotor/Finanse/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/Kotor/Finanse/build-types/debug/res" />
+    </dataSet>
+
+</merger>

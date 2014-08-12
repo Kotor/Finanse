@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/Kotor/Finanse/assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/Kotor/Finanse/build-types/debug/assets" />
+    </dataSet>
+
+</merger>
